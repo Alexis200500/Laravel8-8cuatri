@@ -1,0 +1,91 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Java Script</title>
+</head>
+<body>
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+    
+    <script>
+        /* $(document).ready(function(){
+            $("#evalua").click(function(){
+                var nom= $('#nombre').val();
+                alert (nom);
+
+                if (nom != 'Carlos')
+                $("#edad").attr('value',20);
+                else
+                $("#edad").attr('value',15);
+            });
+        }); */
+
+        /* $(document).ready(function(){
+            // $('#primero').next().text();
+            console.log($('#primero').next().text());
+            
+            console.log($('#test').parent().attr('id'));
+
+            console.log($('#padre').children().attr('id'));
+
+            $('ul li').each(function(index, elemento){
+                console.log("Este elemento numero " +index + "contiene" +$(elemento).text());
+            });
+            
+        }); */
+
+        $(document).ready(function(){
+
+            $('#prueba').on('click',function(){
+                var arreglo= ['Alexis', 'Morales', 'Gómez'];
+                $.each(arreglo,function(indice, valor){
+                    if(arreglo[indice]=='Alexis'){
+                        console.log('elemento' + indice + 'valor' + valor)
+                    }
+                }) 
+            });
+
+            
+            $('#prueba2').on('click', function(){
+                var arreglo= ['Alexis', 'Morales', 'Gómez'];
+                if($.inArray('Morales',arreglo)!==-1)
+                console.log(arreglo[$.inArray('Morales',arreglo)]);
+                else 
+                console.log("no se encuentra")
+
+            })
+
+            $('#prueba3').on('click', function(){
+                var s= '    hola    mundo';
+                console.log($.trim(s));
+
+            })
+
+        });
+
+    </script>
+
+    <!-- Nombre: <input type="text" name="nombre" id="nombre" value="Carlos">
+    <br>
+    <button id='evalua'>Evaluar</button>
+    <br>
+    Edad: <input type="text" name='edad' id='edad' value=''> -->
+
+    <!-- <div>
+        <article id="padre">
+            HEY !! :D
+            <div id="test">Soy el hijo</div>
+        </article>
+    </div>
+
+    <ul>
+        <li id="primero">Soy el primero</li>
+        <li>Soy el que sigue</li>
+        <li>Ultimo de la lista</li>
+    </ul> -->
+    
+    <button id="prueba">Ejecutar</button>
+    <button id="prueba2">Ejecutar</button>
+    <button id="prueba3">Ejecutar</button>
+
+</body>
+</html>

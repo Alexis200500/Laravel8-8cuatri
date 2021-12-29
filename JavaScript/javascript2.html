@@ -1,0 +1,98 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Java Script</title>
+</head>
+<body>
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+
+    <style>
+        .prueba{
+            background-color: red;
+        }
+    </style>
+    
+    <script>
+        /* $(document).ready(function(){
+            $('#prueba').html("<b>Hola tic 83</b>");
+            alert("hola");
+            $('.prueba').text("<b> Prueba <input type='text' name='prueba'> prueba2 </b>");          
+        }); */
+
+        /* $(document).ready(function(){
+            alert("Para");
+            $('div.prueba article p').css({
+                'background-color':'#000',
+            });
+
+            $('div#prueba article#demo p').text("Prueba de demo");
+
+            $('#p2, .p4').text("Selectores por separado");
+        }); */
+
+        /* $(document).ready(function(){
+            alert("pausa");
+            $("#prueba").html("<b> Hola Alumnos</b>");
+
+            var contenido = $("#prueba").html();
+            alert(contenido);
+
+            $("#prueba2").attr("class","demo");
+            var clase = $('#prueba2').attr("class");
+            alert(clase);
+
+            $('#id1').attr("value","Pancho");
+        }); */
+
+        $(document).ready(function(){
+            $("#prueba").click(function(){
+                $("#prueba").addClass("prueba");
+            });
+            $("#prueba2").click(function(){
+                $("#prueba2").removeClass("prueba");
+            });
+
+            $("#prueba3").click(function(){
+                $("#prueba3").toggleClass("prueba");
+                if($("#prueba3"). hasClass("prueba")){
+                    $("#prueba3").text(" Cambie a rojo");
+                }
+                else{
+                    $("#prueba3").text(" Regresa a dar clic");
+                }
+            });
+
+
+        });
+
+    </script>
+
+    <!-- <div id= "prueba"> Lo que se te antoje</div>
+    <div class="prueba">Panchita</div> -->
+
+    <!-- <div class="prueba">
+        <article>
+            <p id= 'p1'>Hola mundo</p>
+        </article>
+    </div>
+
+    <div id= "prueba">
+        <article>
+            <p id='p2'> Hola alumnos</p>
+        </article>
+
+        <article id='demo'>
+            <p id='p3'> Hola alumnos</p>
+        </article>    
+    </div>
+    <p class="p4"> Hola alumnos</p> -->
+    
+    <!-- <p id="prueba"><strong>Hola tic</strong></p>
+    <div id="prueba2"></div>
+    <input type="text" name="id1" id="id1" value="Alexis"> -->
+
+    <div id="prueba"> Dar clic</div>
+    <div id="prueba2" class="prueba"> Dar clic</div>
+    <div id="prueba3"> Dar clic</div>
+</body>
+</html>

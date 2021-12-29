@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta charset = 'utf-8'>
+<script type="text/javascript" src = "jquery-3.6.0.min.js"></script>
+</head>
+
+<script>
+/*     $(document).ready(function(){
+    var nombrecaja;
+    var v= 0;
+    
+        $('#a').on('click',function(){
+        nombrecaja = 'pancho';
+         $('#nombre').attr('value',nombrecaja);
+        });
+        
+        $('#nombre').mouseover(function(){
+           $(this).attr('value','joel');
+        });
+           $('#nombre').on('mouseout',function(){
+           $(this).attr('value',nombrecaja);
+        });
+
+        $('#nombre').on({
+            'mouseover':function(){
+              v++;
+               $(this).attr('value','joel');
+            },
+           'mouseout':function(){
+               $(this).attr('value',nombrecaja);
+               if (v>=3) 
+               $(this).off('mouseover');
+            }
+        });
+       
+    }); */
+
+    $(document).ready(function(){
+      $('#c1').on('cambio',function(){
+         if(this.checked)
+            {
+            $('#c1').removeAttr('checked');
+            $('.cambiar').text('Encender');
+            }
+            else
+            {
+            $('#c1').attr('checked','checked');
+            $('.cambiar').text('Apagado');
+            }
+      });
+      $('.cambiar').on('click',function(){
+         $('#c1').trigger('cambio');
+      });
+    });
+
+
+</script>
+<body>
+<!-- <button id= 'a'> clic</button>
+Nombre <input type = 'text' name = 'nombre' id = 'nombre'>
+<div id= 'caja'>
+</div> -->
+
+
+
+<input type = 'checkbox' id= 'c1' checked = 'checked'>
+<button class =  'cambiar'>Apagar</button>
+
+
+</body>
+</html>

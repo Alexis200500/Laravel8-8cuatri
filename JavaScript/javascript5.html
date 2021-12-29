@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta charset = 'utf-8'>
+<script type="text/javascript" src = "jquery-3.6.0.min.js"></script>
+</head>
+
+<script>
+    $(document).ready(function(){
+
+        $('#a').on('click',function(){
+        var seleccionado  =   $('#tipo').val();
+        var seleccionado2 = $("#tipo option:selected").html();
+         alert($('input:radio[name=edad]:checked').val());
+        //var seleccionado = 5;
+         console.log(seleccionado + ' ' + seleccionado2);
+        });
+		
+		
+        $("input[name=edad]").click(function () {    
+        alert("La edad seleccionada es: " + $('input:radio[name=edad]:checked').val());
+        alert("La edad seleccionada es: " + $(this).val());
+       
+        
+        switch ($('input:radio[name=edad]:checked').val()) { 
+	case '15': 
+		  $('#peli1').attr('disabled', true);
+           $("#peli1").prop("checked", true);
+            $('#peli2').attr('disabled', true);
+             $('#peli3').attr('disabled', true);
+		break;
+	case '20': 
+		 $('#peli1').attr('disabled', false);
+         $("#peli2").prop("checked", true);
+         $('#peli2').attr('disabled', false);
+         $('#peli3').attr('disabled', true);
+		break;
+	case '30': 
+		 $('#peli1').attr('disabled', false);
+         $("#peli1").prop("checked", true);
+         $('#peli2').attr('disabled', false);
+         $('#peli3').attr('disabled', false);
+		break;		
+	default:
+		alert('NO PASA NADA');
+		
+          }
+    });
+       
+    });
+</script>
+<body>
+Selecciona tipo <select name = 'tipo' id = 'tipo'>
+<option value = '1'>A</option>
+<option value = '2'>B</option>
+<option value = '3'>C</option>
+<option value = '4'>D</option>
+</select>
+<br>
+edad<input type="radio" name="edad" id="edad1" value="15"> 15<br>
+	<input type="radio" name="edad" id="edad2" value="20"> 20+<br>
+	<input type="radio" name="edad" id="edad3" value="30"> 30+<br> 
+	<input type="radio" name="edad" id="edad3" value="50"> 50+ 
+<br>
+Pelicula
+    <input type="radio" name="peli" id="peli1" value="bambi"> bambi<br>
+	<input type="radio" name="peli" id="peli2" value="rambo"> rambo<br>
+	<input type="radio" name="peli" id="peli3" value="50 sombras"> 50 sombras
+<br>
+   
+<button id= 'a'> clic</button>
+
+<div id= 'caja'>
+</div>
+</body>
+</html>

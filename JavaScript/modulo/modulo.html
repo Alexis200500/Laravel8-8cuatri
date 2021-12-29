@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo de control</title>
+  <link rel="stylesheet" href="https://bootswatch.com/4/united/bootstrap.min.css">
+  <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+  <script src="javascript.js"></script>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+  <h1> MODULO DE CONTROL</h1>
+  <button type="button" id="agregar" name="agregar" class="btn btn-outline-success" onclick="">Nuevo</button>
+
+
+
+  <!-- MODAL FORMULARIO -->
+  <div id="modal" class="modal">
+
+    <!-- MODAL CONTENIDO-->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form>
+        <legend>Facturas</legend>
+        <div class="row">
+          <div class="col">
+            ID:<input type="text" class="form-control" id="ip" value="1" readonly="readonly">
+          </div>
+          <div class="col">
+            Odontologo<input type="text" class="form-control" id="odo" value="Alexis Morales" readonly="readonly">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            Paciente:
+            <select class="form-control" id="paciente">
+              <option value="Pedro">Pedro </option>
+              <option value="Jesus">Jesus</option>
+              <option value="Osvaldo">Osvaldo</option>
+              <option value="Brenda">Brenda</option>
+              <option value="Carlos">Carlos</option>
+            </select>
+          </div>
+
+          <div class="col">
+            Fecha: <input class="form-control" type="date" id="fecha">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            Tipo de pago: <br>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="pago" id="pago" value="credito" checked>
+              <label class="form-check-label" for="exampleRadios1">
+                Credito
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="pago" id="pago" value="contado">
+              <label class="form-check-label" for="exampleRadios2">
+                Contado
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="pago" id="pago" value="5%">
+              <label class="form-check-label" for="exampleRadios2">
+                5% de descuento
+              </label>
+            </div>
+          </div>
+          <div class="col">
+            Periodo de pago: <input type="text" class="form-control" id="pedpago">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            Tratamiento:
+            <select class="form-control" id="tratamiento">
+              <option selected="selected" value="Extracción">Extracción </option>
+              <option value="Brackets">Brackets</option>
+              <option selected="selected" value="Ortodoncia">Ortodoncia</option>
+              <option value="Bruxismo">Bruxismo</option>
+            </select>
+            <div></div>
+          </div>
+
+          <div class="col">
+            <!-- Fecha: <input class="form-control" type="date" id="example-date-input"> -->
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            Comentarios: <span>Agrega comentarios</span>
+            <textarea class="form-control" id="comentarios" rows="3"></textarea>
+          </div>
+        </div> <br>
+        
+        <div id="color">
+
+        <div class="row">
+          <div class="col">
+            <h4> Detalle del servicio</h4>
+            </br>
+            <table>
+              <tbody id="TableBody">
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+
+          
+          <div class="row">
+            <div class="col">
+              Servicio:<input type="text" name="name[]" id="servicio" class="form-control">
+            </div>
+            <div class="col">
+              Precio: <input type="number" name="name[]" id="precio" class="form-control">
+            </div>
+        </div>
+        
+        <div class="row" >
+          <div class="col">
+            Cantidad: <input type="number" name="name[]" id="cantidad" class="form-control">
+          </div>
+          <div class="col"> <br>
+            <input type="button" value="Agregar" class="btn btn-success" onclick="insertar()">
+          </div>
+        </div>
+        
+      </div>
+        
+
+        <div class="row">
+          <div class="col">
+            Supervisor:<input type="text" class="form-control" id="sup" value="Alexis" readonly="readonly">
+          </div>
+          <div class="col">
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col">
+          </div>
+          <div class="col">
+            Subtotal:<input type="text" class="form-control" id="sub" value="" readonly="readonly">
+            IVA 16%:<input type="text" class="form-control" id="iva" value="" readonly="readonly">
+            Total:<input type="number" class="form-control" id="total" readonly="readonly"> <br>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+          </div>
+          <div class="col">
+            <button type="button" id="guardar" class="btn btn-success">Guardar </button>
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Tablas -->
+
+  <table>
+    <thead>
+      <tr>
+        <th># pago</th>
+        <th>Fecha</th>
+        <th>Paciente</th>
+        <th>Servicio</th>
+        <th>Tipo de pago</th>
+        <th>Total a pagar</th>
+        <th>Status</th>
+        <th>Operaciones</th>
+      </tr>
+    </thead>
+    <tbody id="registro">
+
+    </tbody>
+
+  </table>
+
+  <script>
+    var names = document.getElementsByName('name[]');
+
+    function insertar() {
+      var TableRow = "<tr></tr>";
+
+      for (key = 0; key < names.length; key++)
+        TableRow = TableRow.substring(0, TableRow.length - 5) + "<td>" + names[key].value + "</td>" + TableRow
+        .substring(TableRow.length - 5);
+
+      var TrElement = document.createElement("tr");
+      TrElement.innerHTML = TableRow;
+      document.getElementById("TableBody").appendChild(TrElement);
+
+      var servicio = document.getElementById("servicio").value;
+      var cantidad = parseFloat(document.getElementById("cantidad").value);
+      var precio = parseFloat(document.getElementById("precio").value);
+      var subt = cantidad * precio;
+      var iva = subt * 0.16;
+      var total = subt + iva;
+      console.log(subt);
+      console.log(iva);
+      console.log(total);
+
+      document.getElementById("sub").value = subt;
+      document.getElementById("iva").value = iva;
+      document.getElementById("total").value = total;
+
+      var detalle = ({
+        servicio,
+        precio,
+        cantidad
+      });
+      console.log(detalle);
+
+    }
+
+    // function calcular(){
+    //   var cantidad = parseFloat(document.getElementById("cantidad").value);
+    //   var precio = parseFloat(document.getElementById("precio").value);
+    //   var iva = 0.16;
+    //   var total ;
+
+    //   var sum = cantidad*total;
+
+    //   document.getElementById("total").value=sum;
+
+    // }
+  </script>
+
+</body>
+
+</html>
